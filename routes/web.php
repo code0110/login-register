@@ -20,9 +20,14 @@ Route::get('/user', 'UserController@index');
 
 Auth::routes();
 
+Route::get('auth/social', 'Auth\LoginController@show')->name('social.login');
+Route::get('oauth/{driver}', 'Auth\LoginController@redirectToProvider')->name('social.oauth');
+Route::get('oauth/{driver}/callback', 'Auth\LoginController@handleProviderCallback')->name('social.callback');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/me', 'ProfileController@edit')->name('profile.edit');
 Route::post('/me', 'ProfileController@update')->name('profile.update');
 
 Route::resource('notes', 'NoteController');
+
