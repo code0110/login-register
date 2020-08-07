@@ -24,3 +24,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/me', 'ProfileController@edit')->name('profile.edit');
 Route::post('/me', 'ProfileController@update')->name('profile.update');
+
+Route::resource('notes', 'NoteController');
