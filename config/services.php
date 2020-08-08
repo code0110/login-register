@@ -29,9 +29,9 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-	'github' => [
-		'client_id' => '4f98bbb1f710d8a1deeb',
-		'client_secret' => '2e01b2691e894039b9c293e137e78545349a7292',
-		'redirect' => 'http://aqueous-ravine-55335.herokuapp.com/callback/github',
+    'github' => [
+        'client_id' => '4f98bbb1f710d8a1deeb',
+        'client_secret' => '2e01b2691e894039b9c293e137e78545349a7292',
+        'redirect' => 'http://127.0.0.1:8000/auth/github/callback',
   ],
 ];
