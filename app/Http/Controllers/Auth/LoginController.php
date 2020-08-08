@@ -21,7 +21,7 @@ class LoginController extends Controller {
     /*** Where to redirect users after login. 
     ** @var string 
     */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
     /*** Create a new controller instance. 
     * * @return void 
     */
@@ -37,7 +37,7 @@ class LoginController extends Controller {
             $finduser = User::where('github_id', $user->id)->first();
             if ($finduser) {
                 Auth::login($finduser);
-                return return redirect('/home');
+                return return redirect('/');
             } else {
                 $newUser = User::create(['name' => $user->name, 'email' => $user->email, 'github_id' => $user->id]);
                 Auth::login($newUser);
