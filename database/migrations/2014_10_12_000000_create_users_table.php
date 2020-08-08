@@ -20,7 +20,6 @@ public function up()
         $table->string('email')->unique();
         $table->string('password');
 
-        $table->string('avatar')->nullable();
         $table->string('provider', 80)->nullable();
         $table->string('github_id')->nullable();
 
