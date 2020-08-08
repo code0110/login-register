@@ -13,20 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+    // return view('welcome');
+// });
+
+ Auth::routes();
 Route::get('/', function () {
-    return view('welcome');
+    return view('githubLogin');
 });
-Route::get('/user', 'UserController@index');
-
-Auth::routes();
-
 Route::get('auth/github', 'Auth\LoginController@redirectToGithub');
 Route::get('auth/github/callback', 'Auth\LoginController@handleGithubCallback'); 
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/me', 'ProfileController@edit')->name('profile.edit');
-Route::post('/me', 'ProfileController@update')->name('profile.update');
-
-Route::resource('notes', 'NoteController');
-

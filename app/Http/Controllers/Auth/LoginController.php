@@ -1,12 +1,16 @@
-<?php 
+<?php
+
 namespace App\Http\Controllers\Auth;
+
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Socialite;
 use Auth;
 use Exception;
 use App\User;
-class LoginController extends Controller { 
+class LoginController extends Controller
+{
     /*
     |--------------------------------------------------------------------------
     | Login Controller
@@ -17,18 +21,26 @@ class LoginController extends Controller {
     | to conveniently provide its functionality to your applications.
     |
     */
+
     use AuthenticatesUsers;
-    /*** Where to redirect users after login. 
-    ** @var string 
-    */
-    protected $redirectTo = '/';
-    /*** Create a new controller instance. 
-    * * @return void 
-    */
-    public function __construct() {
+
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    protected $redirectTo = RouteServiceProvider::HOME;
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
         $this->middleware('guest')->except('logout');
     }
-    public function redirectToGithub() {
+	public function redirectToGithub() {
         return Socialite::driver('github')->redirect();
     }
     public function handleGithubCallback() {
@@ -37,7 +49,7 @@ class LoginController extends Controller {
             $finduser = User::where('github_id', $user->id)->first();
             if ($finduser) {
                 Auth::login($finduser);
-                return redirect('/');
+                return redirect('/home');
             } else {
                 $newUser = User::create(['name' => $user->name, 'email' => $user->email, 'github_id' => $user->id]);
                 Auth::login($newUser);
@@ -48,4 +60,4 @@ class LoginController extends Controller {
             return redirect('auth/github');
         }
     }
-} ?>
+}
