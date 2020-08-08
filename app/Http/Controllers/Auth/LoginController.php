@@ -37,7 +37,7 @@ class LoginController extends Controller {
             $finduser = User::where('github_id', $user->id)->first();
             if ($finduser) {
                 Auth::login($finduser);
-                return return redirect('/');
+                return redirect('/');
             } else {
                 $newUser = User::create(['name' => $user->name, 'email' => $user->email, 'github_id' => $user->id]);
                 Auth::login($newUser);
