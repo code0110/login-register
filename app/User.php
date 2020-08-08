@@ -17,8 +17,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
      'name', 'email', 'password',
-     'avatar', 'provider_id', 'provider',
-     'access_token'
+     'avatar','github_id'
     ];
 
 //You can also use below statement 
